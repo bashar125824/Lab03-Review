@@ -4,10 +4,10 @@ using System.Text;
 
 namespace ConsoleApp2
 {
-    class Program
+    public class Program
     {
         public static String filePath = "words.txt";
-        static int challenge1()
+        public static int challenge1()
         {
 
 
@@ -50,7 +50,7 @@ namespace ConsoleApp2
             }
         }
 
-        static void challenge2()
+        public static void challenge2()
         {
 
 
@@ -58,12 +58,15 @@ namespace ConsoleApp2
             int number = Convert.ToInt32(Console.ReadLine());
 
 
+            while (number > 10 || number < 2) {
+               
+                    Console.WriteLine("Invalid Input , Please Enter a Number Between 2 and 10 : ");
+                    number = Convert.ToInt32(Console.ReadLine());
+                
 
-            if (number < 2 || number > 10)
-            {
-                Console.WriteLine("Invalid Input , Please Enter a Number Between 2 and 10 : ");
-                number = Convert.ToInt32(Console.ReadLine());
             }
+
+            
 
 
             int[] numbers = new int[number];
@@ -98,7 +101,7 @@ namespace ConsoleApp2
 
         }
 
-        static void challenge3()
+        public static void challenge3()
         {
             for (int i = 1; i <= 5; i++)
             {
@@ -142,7 +145,7 @@ namespace ConsoleApp2
             Console.WriteLine();
         }
 
-        static int challenge4() {
+        public static int challenge4() {
 
             Console.WriteLine(" Program to get the most frequent element in an array ");
 
@@ -190,7 +193,7 @@ namespace ConsoleApp2
 
         }
 
-        static int challenge5()
+        public static int challenge5()
         {
 
             Console.WriteLine(" Program to get the maximum element in an array ");
@@ -239,7 +242,7 @@ namespace ConsoleApp2
             return maxElement;
         }
 
-        static void challenge6() {
+        public static void challenge6() {
 
             // Add words to filePath  ..
             //String content = "Hello Hi Sunday Tomorrow Yesterday";
@@ -263,36 +266,40 @@ namespace ConsoleApp2
             
         }
 
-        static void challenge8() {
+        public static void challenge8() {
 
-
+           
+            
             string read = File.ReadAllText(filePath);
             string[] words = new string [read.Length];
             words = read.Split(' ');
-            string wordBeforeDelete = words[0];
+            Console.WriteLine(File.ReadAllText(filePath));
+            Console.WriteLine("Enter a word you want to delete : ");
+            string choice = Console.ReadLine();
+            string wordBeforeDelete = choice;
 
 
-            // Delete first word in word.txt
+            // Delete Choosen word in word.txt
 
-            words[0] = "";
+            choice = "";
 
-            File.AppendAllText(filePath, " " + words[0]);
+            File.AppendAllText(filePath, " " + choice);
 
-            Console.WriteLine($" First word is deleted . ");
+            Console.WriteLine($" {wordBeforeDelete} word is deleted . ");
 
-            Console.WriteLine(" word.txt after delete first word : " + File.ReadAllText(filePath));
+            Console.WriteLine($" word.txt after delete {wordBeforeDelete} word : " + File.ReadAllText(filePath));
 
-            // Re-write first word
+            // Re-write Choosen word
 
-            words[0] = wordBeforeDelete;
-            File.AppendAllText(filePath, " " + words[0]);
+            choice = wordBeforeDelete;
+            File.AppendAllText(filePath, " " + choice);
 
-            Console.WriteLine(" word.txt after Re-write first word : " + File.ReadAllText(filePath));
+            Console.WriteLine($" word.txt after Re-write {choice} word : " + File.ReadAllText(filePath));
 
 
         }
 
-        static void challenge9() {
+        public static void challenge9() {
 
             Console.WriteLine(" Enter a sentance : ");
             string sentance = Console.ReadLine();
@@ -316,7 +323,7 @@ namespace ConsoleApp2
         {
 
             //Console.Write(challenge1());
-            //challenge2();
+            challenge2();
             //challenge3();
 
 
@@ -326,7 +333,7 @@ namespace ConsoleApp2
             //challenge6();
             //challenge7();
             //challenge8();
-            challenge9();
+            //challenge9();
 
            
 
