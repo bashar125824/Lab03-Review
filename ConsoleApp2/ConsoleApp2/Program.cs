@@ -7,26 +7,23 @@ namespace ConsoleApp2
     public class Program
     {
         public static String filePath = "words.txt";
-        public static int challenge1()
-        {
 
+        public static int GetProduct(string [] numbers) {
 
             int result = 1;
-            Console.WriteLine("Please enter 3 numbers : ");
-            string[] numbers = Console.ReadLine().Split(' ');
 
             if (numbers.Length < 3)
             {
                 return 0;
             }
 
-
             int[] intNumbers = new int[numbers.Length];
 
             for (int i = 0; i < intNumbers.Length; i++)
             {
                 char character = char.Parse(numbers[i]);
-                if (Char.IsDigit(character) == false) {
+                if (Char.IsDigit(character) == false)
+                {
                     numbers[i] = "1";
                 }
 
@@ -49,27 +46,35 @@ namespace ConsoleApp2
                 return result;
             }
         }
-
-        public static void challenge2()
+        
+            public static int challenge1()
         {
 
+            Console.WriteLine("Please enter 3 numbers : ");
+            string[] numbers = Console.ReadLine().Split(' ');
 
-            Console.WriteLine("Please Enter a Number Between 2 and 10 : ");
+            Console.WriteLine(GetProduct(numbers));
+             return GetProduct(numbers);
+
+        }
+
+
+        public static double Average(int [] numbers) {
+
             int number = Convert.ToInt32(Console.ReadLine());
+            while (number > 10 || number < 2)
+            {
 
+                Console.WriteLine("Invalid Input , Please Enter a Number Between 2 and 10 : ");
+                number = Convert.ToInt32(Console.ReadLine());
 
-            while (number > 10 || number < 2) {
-               
-                    Console.WriteLine("Invalid Input , Please Enter a Number Between 2 and 10 : ");
-                    number = Convert.ToInt32(Console.ReadLine());
-                
 
             }
 
+
+
+
             
-
-
-            int[] numbers = new int[number];
 
             for (int i = 0; i < number; i++)
             {
@@ -87,7 +92,7 @@ namespace ConsoleApp2
             }
 
             int sum = 0;
-            float average = 0.0F;
+            double average = 0.0;
 
             for (int i = 0; i < numbers.Length; i++)
             {
@@ -96,7 +101,20 @@ namespace ConsoleApp2
 
             average = (float)sum / numbers.Length;
 
-            Console.WriteLine($"The average of these {number} numbers is : {average}");
+            return average;
+
+            //Console.WriteLine($"The average of these {number} numbers is : {average}");
+        }
+        public static double challenge2()
+        {
+
+
+            Console.WriteLine("Please Enter a Number Between 2 and 10 : ");
+            int number = Convert.ToInt32(Console.ReadLine());
+            int[] numbers = new int[number];
+
+           // Console.WriteLine(Average(numbers));
+            return Average(numbers);
 
 
         }
@@ -322,8 +340,8 @@ namespace ConsoleApp2
         static void Main(string[] args)
         {
 
-            //Console.Write(challenge1());
-            challenge2();
+            challenge1();
+            //challenge2();
             //challenge3();
 
 
